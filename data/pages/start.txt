@@ -1,0 +1,25 @@
+====== 标题 javascript ======
+<code javascript>
+/**
+ * The HelloWorldApp class implements an application that
+ * simply displays "Hello World!" to the standard output.
+ */
+function t1 (argument) {
+    // body...
+    var a = 1;
+}
+</code>
+====== 标题 html ======
+<code html>
+<div class="a1" data-id="1">这是测试代码</div>
+</code>
+====== 标题 css ======
+<code css>
+body{margin:0;}
+div{padding:10px;}
+</code>
+
+====== 标题 code file ======
+<file html a.html>
+<div class="a1" data-id="1">这是测试代码</div>
+</file>

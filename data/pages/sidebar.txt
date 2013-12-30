@@ -1,0 +1,14 @@
+  * [[start|home]]
+  * [[test1|测试1]]
+     * [[wiki:freichat:what_is_freichat|what is it?]]
+     * [[wiki:freichat:requirements|Requirements]]
+     * [[wiki:freichat:installation-guide|Basic Installation Guide]]
+     * [[wiki:freichat:user-login-integration|User login integration]]
+     * [[wiki:freichat:avatar-integration|Avatar Integration]]
+
+
+  * [[wiki:gradx:usage|GradX Docs]]
+  
+  * [[http://codologic.com|Back To Main Site]]
+
+
