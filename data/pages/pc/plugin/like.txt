@@ -1,0 +1,17 @@
+===== 喜欢组件： =====
+
+=== 配置列表： ===
+^ 标记           ^ 事件                   ^ 必填           ^ 参数       ^
+| J_like_btn     | 点击                   | 是             | 无        |
+| J_dot          | 用于显示是否已经喜欢过   | 否             | 无        |
+| J_like_num     | 用于显示喜欢过的数量     | 否             | 无        |
+
+=== 示例代码： ===
+<code html>
+<a href="javascript:;" class="btn_like J_like_btn">
+  <i class="dot J_dot"></i>
+  <p class="txt" >我很喜欢</p>
+  <p class="num"><span class="J_like_num">0</span>人喜欢</p>
+</a>
+</code>
+

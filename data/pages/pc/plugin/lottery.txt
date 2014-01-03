@@ -1,0 +1,101 @@
+===== 抽奖组件： =====
+
+=== 参数说明： ===
+^ 参数           ^ 值                                     ^ 备注                               ^
+| voteUrl       | 'http://event.yixun.com/component-969/' | 其中component-**969**，**969**为投票组件id \\ 投票组件创建：admin系统->组件平台->组件管理->投票(新建组件)|
+
+
+=== 示例代码： ===
+**PS：**使用示例代码时，注释为 ''config'' 的地方，需要自行配置。
+<file javascript lottery.js>
+//lottery
+function _init_lottery(obj,src,w,h,wmod,swfid){
+    wmod = !wmod && 'transparent';
+    //
+    var swf_html = '';
+    swf_html += '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="'+w+'" height="'+h+'" id="'+swfid+'">';
+    swf_html += '<param name="allowScriptAccess" value="always">';
+    swf_html += '<param name="movie" value="'+src+'">';
+    swf_html += '<param name="quality" value="best">';
+    swf_html += '<param name="bgcolor" value="#ccc">';
+    swf_html += '<param name="wmode" value="'+wmod+'">';
+    swf_html += '<param name="allowScriptAccess" value="always" />';
+    swf_html += '<embed src="'+src+'" quality="high" bgcolor="#ccc" width="'+w+'" height="'+h+'" name="'+swfid+'" allowScriptAccess="always" wmode="'+wmod+'" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">';
+    swf_html += '</object>';
+    //render
+    $(obj).removeClass("hd_loy_img").html(swf_html);
+}
+//lottery-tip
+function showErrorByAs(errno,message,level) {
+  var dialog;
+  if (errno == 0) {//正常抽奖
+    if(level=='2'){
+        dialog = G.ui.popup.showMsg(message, 1);
+    }else{
+        dialog = G.ui.popup.showMsg(message, 3);
+    }
+  } else if (errno == 1) {//未登录
+    dialog = G.ui.popup.showMsg('您好，抽奖活动需要登录后才能参与。', 1, function(){location.href = 'https://base.yixun.com/login.html?url='+encodeURIComponent(location.href);},null,null,'马上登录','取消');
+  }  else if (message == '') {//错误
+    dialog = G.ui.popup.showMsg('抱歉，系统繁忙，请5秒钟后再试');
+  } else {
+    if (errno == 46) {
+        dialog = G.ui.popup.showMsg('您好，此抽奖活动需手机验证后才能参与。', 1, function(){window.open("http://base.yixun.com/myprofile.html");},null,null,'立即验证');
+    } else if(errno == 47) {
+        dialog = G.ui.popup.showMsg('您好，此抽奖活动需邮箱验证后才能参与。', 1, function(){window.open("http://base.yixun.com/myprofile.html");},null,null,'立即验证');
+    } else if(errno == 51) {
+        dialog = G.ui.popup.showMsg('很抱歉，您今天的抽奖次数已用完。请明天再来!', 1, null,null,null,'确定');
+    } else if(errno == 50) {
+        dialog = G.ui.popup.showMsg('很抱歉，您的抽奖次数已用完。', 1, null,null,null,'确定');
+    } else if(errno == 161 || errno == 162) {
+        dialog = G.ui.popup.showMsg("抱歉，先参与活动才能抽奖哦!", 1);
+    }else {
+        dialog = G.ui.popup.showMsg(message);
+    }
+  }
+}
+//lottery-list
+function _getAwardList(info){
+  //config-var
+  var awardlist = ["谢谢你","50Q币","AK47","10Q币","防弹头盔","1Q币","高爆手雷","100Q币"];
+  var addAwardList = [{"nick":"36**14","success_code":"8"},{"nick":"81**44","success_code":"7"},{"nick":"12**00","success_code":"4"},{"nick":"39**58","success_code":"6"},{"nick":"17**09","success_code":"6"},{"nick":"27**73","success_code":"7"},{"nick":"30**51","success_code":"7"},{"nick":"55**20","success_code":"4"},{"nick":"38**90","success_code":"6"}];
+  var listNum = 10;
+  //filter-data
+  var arr = [];
+  var item, _single;
+  for(var j=0, len=info.length; j<len; j++){
+    if(arr.length==listNum){
+      break;
+    }
+    item = info[j];
+    if(item["success_code"]>1){
+      arr.push(item);
+    }
+  }
+  var _listinfo = "";
+  for(var i=0; i<listNum; i++){
+    if(i<arr.length){
+      _single = arr[i];
+    }else{
+      _single = addAwardList[i-arr.length];
+    }
+    if(_single == undefined){
+        break;
+    }
+    _listinfo += "<li>恭喜<em>"+ _single["nick"] + "</em>获得 " + awardlist[_single["success_code"]-1]+"</li>";
+  }
+  $("#J_awardList ul").html(_listinfo);
+}
+
+//ready
+$(document).ready(function () {
+  //lotter-config
+  var pageSn = '17219';
+  var lotteryBg = '{@img_200}';
+  var lotteryPointer = '{@img_201}';
+  var lotteryW = 498, lotteryH = 498;
+  //lottery-render
+  _init_lottery("#J_hd_loy_panel",'http://img3.icson.com/template/2013/09/18/137947283776547200_lottery_flash.swf?success_num=8&mod=lotteryge&act=order&oder_lottery=0&sn='+pageSn+'&event_bg='+lotteryBg+'&event_bt='+lotteryPointer,lotteryW,lotteryH,'','flash_dial');
+  G.app.old.Lottery.getRecentAwardList(pageSn,_getAwardList);
+});
+</file>

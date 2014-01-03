@@ -1,0 +1,147 @@
+===== 抽奖组件： =====
+=== 配置列表： ===
+^ 标记           ^ 事件                   ^ 必填           ^ 参数             ^ 备注                          ^
+| J_getaward     | 点击                  | 是             | data-sn          | 抽奖活动id号。                 |
+| :::            | :::                   | 否             | data-limit       | 抽奖限制次数，不配置则标识无限制 |
+| :::            | :::                   | 否             | data-vcode       | true: 需要增加验证码           |
+| :::            | :::                   | 否             | data-jiangshare  | 分享增加抽奖次数               |
+| :::            | :::                   | 否             | data-begin       | 抽奖活动开始时间\\ 格式：2013-09-16 10:00:00   |
+| :::            | :::                   | 否             | data-end         | 抽奖活动结束时间\\ 格式：2013-09-16 10:00:00   |
+| J_vcode        | 展示验证码对话框        | 否             | 无               | |
+| J_vcode_input  | 获取输入的验证码信息    | 否             | 无               | |
+| J_vcode_noinput| 没有输入验证码的提示    | 否             | 无               | |
+| J_vcode_submit | 提交验证码             | 否             | 无               | |
+| J_close        | 点击                  | 否             | 无               | 关闭弹出框 |
+| J_winner       | 判断是否需要拉取中奖名单 | 否             | 无               | |
+| J_zhuanpan     | 抽奖转盘的动画         | 是             | 无               | |
+| J_getaward_share| 点击                 | 否             | 无               | 分享增加抽奖次数操作 |
+| J_product_item | 点击                  | 否             | data-pid         | 跳转商详商品的pid   |
+| J_href         | 点击                  | 否             | data-href        | 跳转h5页面         |
+| J_numinfo      | 提示用户有多少抽奖机会  | 否             | 无          | <html><p class="J_numinfo" style="display:none"></html>\\ <html>您有<span class="num"></span>次抽奖机会</html>\\ <html></p></html>|
+| J_numinfo_shared | 用户分享机会都用完的提示| 否             | 无        | <html><p class="J_numinfo_shared" style="display:none"></html>\\ <html>您今天的机会已用完，欢迎关注网站其它活动。</html>\\ <html></p></html>|
+| J_numinfo_noshare| 抽奖机会用完，但还没分享的提示 | 否       | 无        | <html><p class="J_numinfo_noshare" style="display:none"></html>\\ <html>您的抽奖机会已用完，分享可以增加1次机会。</html>\\ <html></p></html>|
+| J_float_choujiang_success_*| 点击              | 否       | 无        | 抽奖成功提示框,  <html>*</html>  标识成功编号|
+| J_float_choujiang_fail_*   | 点击              | 否       | 无        | 抽奖失败提示框,  <html>*</html>  标识成功编号|
+| J_float_choujiang_fail_default   | 点击        | 否       | 无        | 抽奖失败默认提示框\\ 找不到对应错误码，则展示默认提示框|
+
+
+=== 示例代码： ===
+<file html lottery.html>
+<!-- 抽奖 转盘html  -->
+<div class="floor" name="choujiang">
+  <p class="hd" id="cj">点击[我要抽奖]启动转盘</p>
+    <div class="lottery J_zhuanpan">
+        <ul>
+            <li class="item1"></li>
+            <li class="item2"></li>
+            <li class="item3"></li>
+            <li class="item4"></li>
+            <li class="item5"></li>
+            <li class="item6"></li>
+            <li class="item7"></li>
+            <li class="item8"></li>
+        </ul>
+        <a href="javascript:;" class="act J_getaward" data-sn="17849" data-vcode="true" data-limit="1" data-jiangshare="1" data-begin="2013-12-25 00:00:00" data-end="2014-1-25 24:00:00"></a>
+    </div>
+</div>
+
+
+<!-- 抽奖 提示框html  -->
+<div class="inner">
+  <div class="mod_pop pop_close J_vcode" style="display:none;">
+      <div class="pop_inner">
+          <p class="txt txt1">请输入验证码</p>
+          <div class="m_code">
+            <div class="txtbox">
+              <input type="text" name="code" class="J_vcode_input" placeholder="请输入验证码">
+              <a href="#" class="no-input J_vcode_noinput" style="display:none;">您未输入验证码</a>
+            </div>
+              <div class="imgbox">
+                  <img class="J_vcode_url J_vocde_change">
+                  <a href="javascript:;" class="J_vocde_change">看不清？换一张</a>
+              </div>
+          </div>
+          <p class="btn"><a href="javascript:;" class="btn_strong all J_vcode_submit J_ytag">提交并抽奖</a></p>
+          <a href="javascript:;" class="btn_close J_vcode_close"></a>
+      </div>
+  </div>
+  <div class="mod_pop J_float_choujiang_success_1" style="display:none;">
+      <div class="pop_inner">
+          <p class="txt">很遗憾，您没有中奖！</p>
+          <p class="btn"><a href="javascript:;" class="btn_normal J_close short  J_ytag">关闭</a><a href="javascript:;" class="btn_strong J_share_normal J_getaward_share long J_ytag">立即分享</a></p>
+      </div>
+  </div>
+  <div class="mod_pop J_float_choujiang_success_1_1" style="display:none;">
+      <div class="pop_inner">
+          <p class="txt">很遗憾，您没有中奖！<br/>每日首次分享可增加一次抽奖机会</p>
+          <p class="btn"><a href="javascript:;" class="btn_normal J_close short  J_ytag">关闭</a><a href="javascript:;" class="btn_strong J_share_normal J_getaward_share long J_ytag">立即分享</a></p>
+      </div>
+  </div>
+  <div class="mod_pop J_float_choujiang_success_3" style="display:none;">
+      <div class="pop_inner">
+          <p class="txt">恭喜您抽中一张<span class="highlight">50减5的优惠券，</span><br/>请到我的易迅中查看！</p>
+          <p class="btn"><a href="javascript:;" class="btn_normal J_close short  J_ytag">关闭</a><a href="javascript:;" class="btn_strong J_share_normal J_getaward_share long J_ytag">立即分享</a></p>
+      </div>
+  </div>
+  <div class="mod_pop J_float_choujiang_success_2" style="display:none;">
+      <div class="pop_inner">
+          <p class="txt">恭喜您抽中一张<span class="highlight">100减10的优惠券，</span><br/>请到我的易迅中查看！</p>
+          <p class="btn"><a href="javascript:;" class="btn_normal J_close short  J_ytag">关闭</a><a href="javascript:;" class="btn_strong J_share_normal J_getaward_share long J_ytag">立即分享</a></p>
+      </div>
+  </div>
+  <div class="mod_pop J_float_choujiang_success_4" style="display:none;">
+      <div class="pop_inner">
+          <p class="txt">恭喜您抽中一台<span class="highlight">荣耀3C手机</span><br>请联系客服登记信息：400-828-1878</p>
+          <p class="btn"><a href="javascript:;" class="btn_normal short J_close J_ytag">关闭</a><a href="javascript:;" class="btn_strong long  J_ytag J_getaward_share">立即分享</a></p>
+      </div>
+  </div>
+  <div class="mod_pop J_float_choujiang_success_5" style="display:none;">
+      <div class="pop_inner">
+          <p class="txt">恭喜您抽中一份<span class="highlight">神秘奖品</span></p>
+          <p class="btn"><a href="javascript:;" class="btn_normal J_close short  J_ytag">关闭</a><a href="http://c.360doo.com/IR.aspx?c=2202&s=715&p=12345&a=31&v=0AD6CE4B4971F2069BDC02784FA0FA51C2511B36C5F4186F315333475D0B0EA8E1A3F8B6C8DD4A5784CE8029DE2EDB3E" class="btn_strong long J_ytag">去查看</a></p>
+      </div>
+  </div>
+  <div class="mod_pop J_float_choujiang_success_6" style="display:none;">
+      <div class="pop_inner">
+          <p class="txt">恭喜您抽中一份<span class="highlight">神秘奖品2</span></p>
+          <p class="btn"><a href="javascript:;" class="btn_normal J_close short  J_ytag">关闭</a><a href="http://c.360doo.com/FA.aspx?c=2202&s=715&p=10824&a=29&v=0AD6CE4B4971F2069BDC02784FA0FA511F1A40D4991A4E65E36BAF2B43A147F8F020E1507CF5F5DDC7FA981D55AB319B" class="btn_strong long J_ytag">去查看</a></p>
+      </div>
+  </div>
+  <div class="mod_pop J_float_choujiang_share" style="display:none;">
+      <div class="pop_inner">
+      <p class="txt">分享成功！抽奖机会<span class="highlight">+1</span></p>
+          <p class="btn"><a href="javascript:;" class="btn_normal long all J_close J_ytag">去抽奖</a></p>
+      </div>
+  </div> 
+  <div class="mod_pop J_float_choujiang_fail_51" style="display:none;">
+      <div class="pop_inner">
+      <p class="txt">您今天的机会用完了，明天再来吧</p>
+      <p class="btn"><a href="javascript:;" class="btn_normal J_close short J_ytag">关闭</a><a href="javascript:;" class="btn_strong J_share_normal J_getaward_share long J_ytag">立即分享</a></p>
+      </div>
+  </div>
+  <div class="mod_pop J_float_choujiang_fail_default J_float_choujiang_fail_40" style="display:none;">
+      <div class="pop_inner">
+      <p class="txt">抽奖失败，未符合抽奖条件！</p>
+          <p class="btn"><a href="javascript:;" class="btn_normal long all J_close J_ytag">我知道了</a></p>
+      </div>
+  </div>  
+  <div class="mod_pop J_float_choujiang_fail_1010" style="display:none;">
+      <div class="pop_inner">
+          <p class="txt">验证码输入不正确！<br>请重新抽奖</p>
+          <p class="btn"><a href="javascript:;" class="btn_normal long all J_close J_ytag">我知道了</a></p>
+      </div>
+  </div>
+  <div class="mod_pop J_float_choujiang_fail_notbegin J_float_choujiang_fail_44" style="display:none;">
+      <div class="pop_inner">
+          <p class="txt">抽奖活动将于11月25日0时正式开始<br>感谢您的关注</p>
+          <p class="btn"><a href="javascript:;" class="btn_normal long all J_close J_ytag">我知道了</a></p>
+      </div>
+  </div>
+  <div class="mod_pop J_float_choujiang_fail_end J_float_choujiang_fail_45" style="display:none;">
+      <div class="pop_inner">
+      <p class="txt">活动已经结束，感谢关注！<p>
+          <p class="btn"><a href="javascript:;" class="btn_normal long all J_close J_ytag">我知道了</a></p>
+      </div>
+  </div>
+</div>
+</file>

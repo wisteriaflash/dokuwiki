@@ -1,0 +1,11 @@
+===== 组件列表  =====
+
+  * [[mo:plugin:like|喜欢组件]]
+  * [[mo:plugin:like|喜欢组件]]
+  * [[mo:plugin:share|分享组件]]
+  * [[mo:plugin:lottery|抽奖组件]]
+  * [[mo:plugin:imglazy|图像异步载入组件]]
+  * [[mo:plugin:float|漂浮组件]]
+  * [[mo:plugin:template|模板组件]]
+  * [[mo:plugin:scroll|页面分屏滚动组件]]
+  * [[mo:ohter|其他]]

@@ -1,0 +1,12 @@
+===== 漂浮组件： =====
+
+=== 配置列表： ===
+^ 标记           ^ 事件                   ^ 必填           ^ 参数       ^|
+| J_floating     | 载入完成 onload        | 否             | Data-position     |top\\ 默认参数，当页面滚动时，会自动贴到页面的顶部 |
+| :::| ::: | ::: | ::: |bottom *\\ 将一直漂浮在页面的底部。|
+| :::| ::: | 否  | Data-position-bottom-offset = 11 * |单位：像素\\ 指定底部的位置，选填|
+
+=== 示例代码： ===
+<code html>
+<div class="mod_act mod_act_wx J_floating" data-position="top">我要固定位置</div>
+</code>

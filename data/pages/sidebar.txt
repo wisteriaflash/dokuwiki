@@ -1,14 +1,18 @@
-  * [[start|home]]
-  * [[test1|测试1]]
-     * [[wiki:freichat:what_is_freichat|what is it?]]
-     * [[wiki:freichat:requirements|Requirements]]
-     * [[wiki:freichat:installation-guide|Basic Installation Guide]]
-     * [[wiki:freichat:user-login-integration|User login integration]]
-     * [[wiki:freichat:avatar-integration|Avatar Integration]]
+  * [[start|首页]]
 
+  * [[mo:index|mo - 单品活动页]]
+     * [[mo:plugin:like|喜欢组件]]
+     * [[mo:plugin:share|分享组件]]
+     * [[mo:plugin:lottery|抽奖组件]]
+     * [[mo:plugin:imglazy|图像异步载入组件]]
+     * [[mo:plugin:float|漂浮组件]]
+     * [[mo:plugin:template|模板组件]]
+     * [[mo:plugin:scroll|页面分屏滚动组件]]
+     * [[mo:ohter|其他]]
 
-  * [[wiki:gradx:usage|GradX Docs]]
-  
-  * [[http://codologic.com|Back To Main Site]]
+----
 
-
+  * [[pc:index|pc - 单品活动页]]
+     * [[pc:plugin:like|喜欢组件]]
+     * [[pc:plugin:share|分享组件]]
+     * [[pc:plugin:lottery|抽奖组件]]

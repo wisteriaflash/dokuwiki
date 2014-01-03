@@ -1,4 +1,6 @@
-====== 标题 javascript ======
+**demo-测试代码**
+
+====== javascript ======
 <code javascript>
 /**
  * The HelloWorldApp class implements an application that
@@ -9,17 +11,29 @@ function t1 (argument) {
     var a = 1;
 }
 </code>
-====== 标题 html ======
+====== html ======
 <code html>
 <div class="a1" data-id="1">这是测试代码</div>
 </code>
-====== 标题 css ======
+====== css ======
 <code css>
 body{margin:0;}
 div{padding:10px;}
 </code>
 
-====== 标题 code file ======
+====== code file ======
 <file html a.html>
 <div class="a1" data-id="1">这是测试代码</div>
 </file>
+
+====== 表格 ======
+|                ^ Heading 2       ^ Heading 3          ^
+| Row 1 Col 1    | Row 1 Col 2     | Row 1 Col 3        |
+| Row 2 Col 1    | some colspan (note the double pipe) ||
+| Row 3 Col 1    | Row 3 Col 2     | Row 3 Col 3        |
+
+^           Table with alignment           ^^^
+|         right|    center    |left          |
+|left          |    right     |    center    |
+| xxxxxxxxxxxx | xxxxxxxxxxxx | xxxxxxxxxxxx |
+

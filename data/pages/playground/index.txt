@@ -1,0 +1,5 @@
+dockuwiki：更改默认模板宽度，在文件**style.ini**中修改：
+<code>__site_width__      = "75em"            ; @ini_site_width</code>
+更改值为100%，即如下代码：
+<code>__site_width__      = "100%"            ; @ini_site_width</code>
+然后再进入配置页面，点击“保存”（这将清除缓存），然后再次刷新页面，页面宽度将变化。

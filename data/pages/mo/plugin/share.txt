@@ -1,0 +1,59 @@
+====== 分享组件 ======
+===== 标准分享组件 =====
+=== 配置列表： ===
+^ 标记                 ^ 事件            ^ 必填           ^ 参数       ^
+| J_share_normal       | 点击            | 是             | 无        |
+
+
+=== 示例代码： ===
+<code html>
+<a href="javascript:;" class="btn_share J_share_normal">我要分享</a>
+</code>
+
+=== 标准组件功能： ===
+  * 普通的腾讯微博分享
+  * 微信内分享
+  * APP内分享，下图是android的，Iphone侧可以分享到微信。
+
+----
+
+===== 腾讯微博分享组件* =====
+=== 配置列表： ===
+^ 标记                 ^ 事件            ^ 必填           ^ 参数       ^
+| J_share_tencentweibo | 点击            | 是             | 无        |
+=== 示例代码： ===
+<code html>
+<a href="javascript:;" class="btn_share J_share_tencentweibo">我要分享</a>
+</code>
+
+----
+===== 新浪微博分享组件* =====
+=== 配置列表： ===
+^ 标记                ^ 事件            ^ 必填           ^ 参数       ^
+| J_share_sinaweibo  | 点击            | 是             | 无        |
+=== 示例代码： ===
+<code html>
+<a href="javascript:;" class="btn_share J_share_sinaweibo">我要分享</a>
+</code>
+
+----
+===== 微信内分享组件* =====
+=== 配置列表： ===
+^ 标记                 ^ 事件            ^ 必填           ^ 参数       ^
+| J_share_weixin       | 点击            | 是             | 无        |
+=== 示例代码： ===
+<code html>
+<a href="javascript:;" class="btn_share J_share_sinaweibo">我要分享</a>
+</code>
+
+----
+===== 易迅APP内分享组件* =====
+=== 配置列表： ===
+^ 标记                 ^ 事件            ^ 必填           ^ 参数       ^
+| J_share_app         | 点击            | 是             | 无        |
+=== 示例代码： ===
+<code html>
+<a href="javascript:;" class="btn_share J_share_app">我要分享</a>
+</code>
+
+----

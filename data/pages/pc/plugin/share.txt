@@ -1,0 +1,54 @@
+===== 分享组件： =====
+
+=== 参数说明： ===
+^ 参数           ^ 值                                     ^ 备注                               ^
+| voteUrl       | 'http://event.yixun.com/component-969/' | 其中component-**969**，**969**为投票组件id \\ 投票组件创建：admin系统->组件平台->组件管理->投票(新建组件)|
+
+
+=== 示例代码： ===
+**PS：**使用示例代码时，需要更改numNode，shareNode等class名与页面对应起来。分享的内容根据所需，自行更改即可。
+<code javascript>
+//share-vote
+function shareVote(){
+  var voteUrl = 'http://event.yixun.com/component-969/';
+  var numNode = $(".share em");
+  //getNum
+  G.util.post(voteUrl+'get_voted_num.html',{point_ids:"1"},function(ret){
+    if(!ret.errno) {
+      numNode.html(ret.voted_num[1]);
+    } else {
+       G.app.Component.getErrMsg(ret.errno, ret.errmsg);
+    }
+  });
+  //bindhandler
+  $(".share-btn").click(function(){
+    $.post(voteUrl+"vote.html",{vote_point:"1"},function(res){
+      _num = numNode.html() - 0;
+      numNode.html(_num+1);
+    })
+  });  
+}
+ 
+//share-wb
+function shareWb(){
+  var max = 140;
+  var used = 0;
+  var _t_huati = "#下载登陆易迅客户端送CF礼包#";//广播墙话题
+  var _t_evn = "下载登陆易迅客户端送CF礼包啦！极品装备！百万Q币等你来拿！易迅无线惊喜无限，小伙伴快来！"; //活动广告语
+  var _t = "#"+_t_huati+"# "+_t_evn;
+  var _url = encodeURIComponent('http://event.yixun.com/event/172192b63.html');//活动页面地址   
+  var _pic=encodeURI("http://img3.icson.com/template/2013/12/23/138779332293624800_img_300.jpg");//微博广告图片,可以空
+  //bindhandler
+  $(".share-btn").click(function(){
+      var _u = 'http://v.t.qq.com/share/share.php?title='+encodeURIComponent(_t_huati+_t_evn)+'&url='+_url+'&appkey=801148568&site=www.yixun.com&pic='+_pic;
+      window.open(_u,'','width=600,height=300,top=0,left=0,toolbar=no,menubar=no,scrollbars=no,location=yes,resizable=no,status=no');
+  });  
+}
+
+
+//ready
+$(document).ready(function () {
+  shareWb();    //分享微博
+  shareVote();  //分享条数
+});
+</code>

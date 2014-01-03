@@ -1,0 +1,68 @@
+====== 其他 ======
+
+===== 购买链接 =====
+
+=== 配置列表： ===
+^ 标记             ^ 事件                  ^ 必填           ^ 参数             ^ 备注             ^
+| J_product_item   | 点击                  | 否             | data-pid        | 跳转商详商品的pid |
+| :::              | :::                   | 否             | data-mprice     | 配置跳转商详页的chid\\ chid 是在cookie中的名字，url 里面接收的是channelId |
+
+=== 示例代码： ===
+<code html>
+<a class="btn_buy J_product_item" href="javascript:;" data-pid='1362759' data-mprice="400">立即抢购</a>
+</code>
+
+----
+
+
+
+
+
+
+===== mask =====
+  - 在包含mask的页面，需要将页面html(除了弹框相关代码)包裹在一个id为 ''J_wrapper'' 的div中，并且在最后，添加一个class为 ''maskbg'' 的 ''i'' 标签。
+  - 在body底部，添加相关的js代码。
+
+**示例代码：**
+<code html>
+<body>
+  <div id="J_wrapper">
+    页面内容
+    <i class="maskbg"></i>
+  </div>
+
+  <script>
+    $(".maskbg").css("height",$("body").height() + "px");
+    $(".J_float_coupon_close").on("touchend",function(){$('.mask').hide();$(".maskbg").hide();})
+  </script>
+</body>
+</code>
+
+----
+
+===== 吸附到顶部js代码 =====
+**说明：**当滚动高度超过 ''_mod'' 时，更改 ''position''。
+
+**示例代码：**
+<code javascript>
+//share-pos
+(function(){
+  var _mod = $(".mod_act");
+  var _mod_top = _mod.position().top();
+  function scroll(){
+    var _height = $(window).height(),
+      _scroll = window.scrollY;
+    if(_scroll < _mod_top){
+      _mod.css({"position":"absolute","top": _mod_top+"px;"});
+    }else if(_scroll > _mod_top){
+      _mod.css({"position":"fixed","top":"0"});
+    }
+  }
+  $(document).ready(function(){setTimeout(function(){scroll()},500)})
+  $(window).on("touchmove",function(){scroll();})
+  $(window).on("touchstart",function(){scroll()})
+  $(window).on("touchend",function(){scroll();setTimeout(function(){scroll()},200)})
+})();
+</code>
+
+----

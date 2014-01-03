@@ -1,0 +1,12 @@
+===== 图像异步载入组件： =====
+=== 说明： ===
+可以让图片根据屏幕的当前位置显示相应的图片，减少页面的首次载入大小，也可以增加页面的顺滑度。
+
+=== 配置列表： ===
+^ 标记           ^ 事件                   ^ 必填           ^ 参数             ^         ^
+| J_lazy         | 载入完成 onload以及滚动 | 是             | data-src        | 图片地址 |
+
+=== 示例代码： ===
+<code html>
+<img data-src="http://st.icson.com/static_v1/img/app/touch/event/niubia_0517/pic_2.png" class="J_lazy" width="100%">
+</code>

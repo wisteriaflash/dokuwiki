@@ -1,0 +1,19 @@
+a:2:{s:7:"current";a:9:{s:4:"date";a:2:{s:7:"created";i:1388645748;s:8:"modified";i:1388652532;}s:7:"creator";s:5:"admin";s:4:"user";s:5:"admin";s:11:"last_change";a:7:{s:4:"date";i:1388652532;s:2:"ip";s:9:"127.0.0.1";s:4:"type";s:1:"E";s:2:"id";s:18:"mo:plugin:template";s:4:"user";s:5:"admin";s:3:"sum";s:0:"";s:5:"extra";s:0:"";}s:11:"contributor";a:1:{s:5:"admin";s:5:"admin";}s:5:"title";s:15:"模板组件：";s:11:"description";a:2:{s:15:"tableofcontents";a:1:{i:0;a:4:{s:3:"hid";s:12:"模板组件";s:5:"title";s:15:"模板组件：";s:4:"type";s:2:"ul";s:5:"level";i:2;}}s:8:"abstract";s:704:"模板组件：
+
+说明：
+
+可以使用如    的方式组织html5页面，方便重构同学开发。
+
+配置列表：
+ 标记            事件                    必填            参数             J_template*     载入完成 onload         否              Id               一个ID号，可以在多进程渲染时知道当前渲染的对象  否              data-wrapper-id  产生的新数据插入到哪个对象后面  data-remove            否              data-remove      True: 渲染结束后，删除模板
+False: 不删除模板
+示例代码：
+
+
+<script class="J_template" type="text/template">
+<ul>
+  {{#list}}
+    <li>{{name}} {%= new Date() %} </li>
+  {{/list}}
+</ul>
+</script>…";}s:8:"internal";a:2:{s:5:"cache";b:1;s:3:"toc";b:1;}s:8:"relation";a:1:{s:10:"firstimage";s:0:"";}}s:10:"persistent";a:5:{s:4:"date";a:2:{s:7:"created";i:1388645748;s:8:"modified";i:1388652532;}s:7:"creator";s:5:"admin";s:4:"user";s:5:"admin";s:11:"last_change";a:7:{s:4:"date";i:1388652532;s:2:"ip";s:9:"127.0.0.1";s:4:"type";s:1:"E";s:2:"id";s:18:"mo:plugin:template";s:4:"user";s:5:"admin";s:3:"sum";s:0:"";s:5:"extra";s:0:"";}s:11:"contributor";a:1:{s:5:"admin";s:5:"admin";}}}

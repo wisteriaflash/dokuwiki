@@ -1,0 +1,23 @@
+===== 模板组件： =====
+
+=== 说明： ===
+可以使用如  <html>{{name}}</html>  的方式组织html5页面，方便重构同学开发。
+
+=== 配置列表： ===
+^ 标记           ^ 事件                   ^ 必填           ^ 参数            ^|
+| J_template*    | 载入完成 onload        | 否             | Id              | 一个ID号，可以在多进程渲染时知道当前渲染的对象 |
+| :::            | :::                   | 否             | data-wrapper-id | 产生的新数据插入到哪个对象后面 |
+| :::            | data-remove           | 否             | data-remove     | True: 渲染结束后，删除模板\\ False: 不删除模板|
+
+=== 示例代码： ===
+<code html>
+<script class="J_template" type="text/template">
+<ul>
+  {{#list}}
+    <li>{{name}} {%= new Date() %} </li>
+  {{/list}}
+</ul>
+</script>
+</code>
+
+具体的使用方法，参见 [[http://mustache.github.io/]]和 [[http://ejohn.org/blog/javascript-micro-templating/]]

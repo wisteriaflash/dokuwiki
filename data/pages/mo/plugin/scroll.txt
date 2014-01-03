@@ -1,0 +1,15 @@
+===== 页面分屏滚动组件： =====
+
+=== 说明： ===
+起到一个分屏自动吸附的滚动效果。
+
+=== 配置列表： ===
+^ 标记           ^ 事件                  ^ 必填           ^ 参数      ^
+| J_scroll       | 载入完成 onload       | 否             | 无        |
+
+=== 示例代码： ===
+<code html>
+<article class="b1 J_scroll"></article>
+
+<article class="b2 J_scroll"></article>
+</code>
